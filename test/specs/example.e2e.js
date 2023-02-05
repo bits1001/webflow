@@ -5,7 +5,7 @@ import WorkspacePage from '../pageobjects/workspace.page.js';
 describe('My Login application', () => {
     it('should login with valid credentials', async () => {
         await LoginPage.open();
-        await LoginPage.login('bugsberry27@gmail.com', 'Testingpassword123');
+        await LoginPage.login(process.env.WEBFLOW_USERNAME, process.env.WEBFLOW_VALID_PASSWORD);
         await expect(WorkspacePage.navbarAccount).toBeExisting();
         await expect(WorkspacePage.workspaceName).toHaveText("Mrunal's Workspace");
         await WorkspacePage.logout();
@@ -13,7 +13,7 @@ describe('My Login application', () => {
 
     it('login should fail with invalid credentials', async () => {
         await LoginPage.open();
-        await LoginPage.login('bugsberryabc@gmail.com', 'invalidPassword123');
+        await LoginPage.login(process.env.WEBFLOW_USERNAME, process.env.WEBFLOW_INVALID_PASSWORD);
         await expect(WorkspacePage.navbarAccount).not.toBeExisting();
         await expect(LoginPage.invalidCredentialError).toHaveText("Invalid email and password combination");
     });
