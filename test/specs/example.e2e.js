@@ -1,8 +1,7 @@
 import LoginPage from '../pageobjects/login.page.js';
 import WorkspacePage from '../pageobjects/workspace.page.js';
-//import SecurePage from '../pageobjects/secure.page.js';
 
-describe('My Login application', () => {
+describe('Login Tests', () => {
     it('should login with valid credentials', async () => {
         await LoginPage.open();
         await LoginPage.login(process.env.WEBFLOW_USERNAME, process.env.WEBFLOW_VALID_PASSWORD);
